@@ -9,8 +9,7 @@ function App() {
   }, [])
 
   const apiTest=async()=>{
-    fetchData('/movie/popular').
-    then((res)=>console.log(res))
+    fetchData('/movie/popular').then((res)=>console.log(res))
 
   }
   
