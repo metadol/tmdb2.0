@@ -4,10 +4,9 @@ export const homeSlice = createSlice({
     name: "home",
     initialState: {
         url: {
-            name:"kevin"
         },
         genres: {
-          
+
         },
     },
     reducers: {

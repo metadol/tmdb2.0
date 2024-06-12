@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { fetchData } from './utils/api'
+import { fetchDataFromApi } from './utils/api'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -32,16 +32,22 @@ function App() {
   }, [])
 
   const apiTest = async () => {
-    fetchData('/movie/popular').then((res) => {
+    fetchDataFromApi('/configuration').then((res) => {
       console.log(res)
-      dispatch(setApiConfiguration(res))
+
+      const url = {
+        backdrop : res.images.secure_base_url + "original",
+        poster : res.images.secure_base_url + "original",
+        profile : res.images.secure_base_url + "original",
+      }
+      dispatch(setApiConfiguration(url))
     })
 
   }
 
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:mediaType/:id" element={<Details />} />
